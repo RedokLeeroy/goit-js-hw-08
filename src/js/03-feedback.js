@@ -7,14 +7,14 @@ const inputElone = document.querySelector("[name='email']");
 const inputEltwo = document.querySelector("[name='message']");
 
 
-form.addEventListener("input", handleform);
-function handleform (event) {
-    const {email, message} = event.currentTarget.elements
+form.addEventListener("input", throttle(handleform, 500));
+function handleform () {
+    const email = form.email.value
+    const message = form.message.value
     const obj = {
-        email: email.value,
-        message: message.value
+        email,
+        message
     }
-
     data = localStorage.setItem(STORAGE_KEY, JSON.stringify(obj))
 }
 
